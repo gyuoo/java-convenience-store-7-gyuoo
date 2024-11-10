@@ -28,4 +28,24 @@ public class OutputView {
         }
         System.out.println(productsInformation);
     }
+
+    public void printEnterProductsToPurchase() {
+        System.out.println(ENTER_PRODUCTS_TO_PURCHASE.getMessage());
+    }
+
+    public void printPromotionAvailable(String productName) {
+        System.out.println(String.format(PROMOTION_AVAILABLE.getMessage(), productName));
+    }
+
+    public void printPromotionStockInsufficient(String productName, int quantity) {
+        System.out.println(String.format(PROMOTION_STOCK_INSUFFICIENT.getMessage(), productName, quantity));
+    }
+
+    public void printAskMembershipDiscount() {
+        System.out.println(ASK_MEMBERSHIP_DISCOUNT.getMessage());
+    }
+
+    public void printAskAdditionalPurchase() {
+        System.out.println(ASK_ADDITIONAL_PURCHASE.getMessage());
+    }
 }
