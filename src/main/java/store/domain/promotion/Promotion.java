@@ -21,6 +21,10 @@ public class Promotion {
         return !currentDate.isBefore(startDate) && !currentDate.isAfter(endDate);
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getBuyQuantity() {
         return buyQuantity;
     }
