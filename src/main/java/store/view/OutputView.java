@@ -1,6 +1,11 @@
 package store.view;
 
+import static store.view.ConsoleMessage.ASK_ADDITIONAL_PURCHASE;
+import static store.view.ConsoleMessage.ASK_MEMBERSHIP_DISCOUNT;
 import static store.view.ConsoleMessage.CURRENT_PRODUCTS;
+import static store.view.ConsoleMessage.ENTER_PRODUCTS_TO_PURCHASE;
+import static store.view.ConsoleMessage.PROMOTION_AVAILABLE;
+import static store.view.ConsoleMessage.PROMOTION_STOCK_INSUFFICIENT;
 import static store.view.ConsoleMessage.WELCOME_MESSAGE;
 
 import java.util.Map;
