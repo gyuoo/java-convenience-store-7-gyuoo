@@ -1,8 +1,11 @@
 package store.domain.product;
 
 import store.domain.promotion.Promotion;
+import store.util.DateManager;
 
 public class PromotionProduct extends Product {
+
+    private DateManager dateManager;
     private Promotion promotion;
 
     public PromotionProduct(String name, int price, int quantity, Promotion promotion) {
@@ -12,5 +15,9 @@ public class PromotionProduct extends Product {
 
     public Promotion getPromotion() {
         return promotion;
+    }
+
+    public boolean isPromotionApplicable() {
+        return promotion.isActive(dateManager.getNow());
     }
 }
