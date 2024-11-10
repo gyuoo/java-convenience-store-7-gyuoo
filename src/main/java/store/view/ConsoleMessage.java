@@ -6,7 +6,8 @@ public enum ConsoleMessage {
 
     // Product
     CURRENT_PRODUCTS("현재 보유하고 있는 상품입니다."),
-    PRODUCT_AVAILABLE("- %s %s원 %s개 %s"),
+    PRODUCT_AVAILABLE("- %s %s원 %s개"),
+    PRODUCT_AVAILABLE_WITH_PROMOTION("- %s %s원 %s개 %s"),
     PRODUCT_OUT_OF_STOCK("- %s %s원 재고 없음"),
 
     // Input
