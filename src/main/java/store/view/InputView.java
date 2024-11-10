@@ -1,16 +1,16 @@
 package store.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import store.util.InputValidator;
+import store.util.ProductInputValidator;
 
 public class InputView {
 
     private final OutputView outputView;
-    private final InputValidator inputValidator;
+    private final ProductInputValidator productInputValidator;
 
-    public InputView(OutputView outputView, InputValidator inputValidator) {
+    public InputView(OutputView outputView, ProductInputValidator productInputValidator) {
         this.outputView = outputView;
-        this.inputValidator = inputValidator;
+        this.productInputValidator = productInputValidator;
     }
 
     public String readLine() {
@@ -22,7 +22,7 @@ public class InputView {
             outputView.printEnterProductsToPurchase();
             String input = readLine();
             try {
-                return inputValidator.validateProductInput(input);
+                return productInputValidator.validateProductInput(input);
             } catch (IllegalArgumentException e) {
                 outputView.printMessage(e.getMessage());
             }

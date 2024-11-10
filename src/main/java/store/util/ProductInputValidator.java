@@ -6,7 +6,7 @@ import static store.exception.enums.ErrorMessage.INVALID_FORMAT;
 import java.util.Arrays;
 import java.util.List;
 
-public class InputValidator {
+public class ProductInputValidator {
 
     private static final String PRODUCT_SEPARATOR = ",";
     private static final String NAME_QUANTITY_SEPARATOR = "-";
