@@ -19,8 +19,12 @@ public class Product {
     public int getPrice() {
         return price;
     }
-    
+
     public int getQuantity() {
         return quantity;
+    }
+
+    public boolean isOutOfStock() {
+        return quantity == 0;
     }
 }
