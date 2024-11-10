@@ -14,17 +14,17 @@ public class InputValidator {
     private static final String CLOSE_BRACKET = "]";
     private static final String SPACE = " ";
 
-    public boolean isValidProductInput(String input) {
+    public String validateProductInput(String input) {
         if (isNullOrEmpty(input)) {
             throw new IllegalArgumentException(EMPTY_INPUT.getMessage());
         }
         List<String> products = Arrays.stream(input.split(PRODUCT_SEPARATOR)).toList();
         for (String product : products) {
             if (!isValidProductFormat(product.trim())) {
-                return false;
+                throw new IllegalArgumentException(INVALID_FORMAT.getMessage());
             }
         }
-        return true;
+        return input;
     }
 
     private boolean isNullOrEmpty(String input) {
