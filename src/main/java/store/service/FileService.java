@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import store.domain.product.Product;
+import store.domain.product.ProductRepository;
 import store.domain.promotion.Promotion;
 import store.domain.promotion.PromotionRepository;
 import store.util.FileParser;
@@ -13,10 +15,13 @@ import store.util.FileParser;
 public class FileService {
 
     private final FileParser fileParser;
+    private final ProductRepository productRepository;
     private final PromotionRepository promotionRepository;
 
-    public FileService(FileParser fileParser, PromotionRepository promotionRepository) {
+    public FileService(FileParser fileParser, ProductRepository productRepository,
+                       PromotionRepository promotionRepository) {
         this.fileParser = fileParser;
+        this.productRepository = productRepository;
         this.promotionRepository = promotionRepository;
     }
 
@@ -37,6 +42,25 @@ public class FileService {
             }
         }
         return promotions;
+    }
+
+    public void saveProducts(List<Product> products) {
+        for (Product product : products) {
+            productRepository.save(product);
+        }
+    }
+
+    private List<Product> readProducts(String filePath) throws IOException {
+        List<Product> products = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            skipHeader(br);
+            String line;
+            while ((line = br.readLine()) != null) {
+                Product product = fileParser.parseProduct(parseLine(line));
+                products.add(product);
+            }
+        }
+        return products;
     }
 
     private void skipHeader(BufferedReader br) throws IOException {
