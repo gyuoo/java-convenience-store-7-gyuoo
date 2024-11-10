@@ -24,4 +24,9 @@ public class ProductRepository {
     public boolean exists(String name) {
         return productCache.containsKey(name);
     }
+
+    public boolean isStockSufficient(String productName, int requiredQuantity) {
+        Product product = getProductByName(productName);
+        return product != null && product.getQuantity() >= requiredQuantity;
+    }
 }
