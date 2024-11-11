@@ -19,6 +19,13 @@ public class ProductRepository {
         return products.stream().anyMatch(product -> product.getName().equals(productName));
     }
 
+    public Product findProduct(String productName) {
+        return products.stream()
+            .filter(product -> product.getName().equals(productName))
+            .findFirst()
+            .orElse(null);
+    }
+
     public boolean isStockSufficient(String productName, int requiredQuantity) {
         int promotionStock = getPromotionStock(productName);
         return promotionStock >= requiredQuantity ||
