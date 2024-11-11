@@ -51,11 +51,11 @@ public class Order {
         return promoStock < item.getQuantity() && promoStock > 0;
     }
 
-    private boolean handlePartialPromotion(OrderItem item, int promoStock) {
-        int nonPromoQuantity = item.getQuantity() - promoStock;
+    private boolean handlePartialPromotion(OrderItem item, int promotionStock) {
+        int nonPromotionQuantity = item.getQuantity() - promotionStock;
         String message = String.format(
             ConsoleMessage.PROMOTION_STOCK_INSUFFICIENT.getMessage(),
-            item.getProductName(), nonPromoQuantity
+            item.getProductName(), nonPromotionQuantity
         );
         return inputView.userConfirmed(message);
     }
