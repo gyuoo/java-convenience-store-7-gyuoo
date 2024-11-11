@@ -13,6 +13,11 @@ public class PromotionProduct extends Product {
         this.promotion = promotion;
     }
 
+    @Override
+    public boolean isOutOfStock() {
+        return super.isOutOfStock() && promotion == null;
+    }
+
     public Promotion getPromotion() {
         return promotion;
     }
