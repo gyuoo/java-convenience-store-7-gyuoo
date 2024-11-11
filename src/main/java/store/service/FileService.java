@@ -26,19 +26,32 @@ public class FileService {
         this.promotionRepository = promotionRepository;
     }
 
-    public void savePromotions(List<Promotion> promotions) {
+    public List<Promotion> getPromotions() throws IOException {
+        List<Promotion> promotions = loadPromotionsFromFile(
+            "src/main/resources/promotions.md");
+        savePromotions(promotions);
+        return promotions;
+    }
+
+    public List<Product> getProducts() throws IOException {
+        List<Product> products = loadProductsFromFile("src/main/resources/products.md");
+        saveProducts(products);
+        return products;
+    }
+
+    private void savePromotions(List<Promotion> promotions) {
         promotions.forEach(promotionRepository::save);
     }
 
-    public void saveProducts(List<Product> products) {
+    private void saveProducts(List<Product> products) {
         products.forEach(productRepository::save);
     }
 
-    public List<Promotion> loadPromotionsFromFile(String filePath) throws IOException {
+    private List<Promotion> loadPromotionsFromFile(String filePath) throws IOException {
         return loadEntitiesFromFile(filePath, line -> fileParser.parsePromotion(parseLine(line)));
     }
 
-    public List<Product> loadProductsFromFile(String filePath) throws IOException {
+    private List<Product> loadProductsFromFile(String filePath) throws IOException {
         return loadEntitiesFromFile(filePath, line -> fileParser.parseProduct(parseLine(line)));
     }
 
