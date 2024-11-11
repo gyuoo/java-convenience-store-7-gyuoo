@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
 import store.domain.product.Product;
 import store.domain.product.ProductRepository;
@@ -25,10 +24,6 @@ public class FileService {
         this.fileParser = fileParser;
         this.productRepository = productRepository;
         this.promotionRepository = promotionRepository;
-    }
-
-    public Map<String, Product> getProductsAsMap() {
-        return productRepository.getAllProducts();
     }
 
     public void savePromotions(List<Promotion> promotions) {
