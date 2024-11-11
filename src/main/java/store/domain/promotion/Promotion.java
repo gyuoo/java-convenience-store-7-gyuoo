@@ -18,6 +18,10 @@ public class Promotion {
         this.endDate = endDate;
     }
 
+    public Promotion() {
+
+    }
+
     public boolean isActive(LocalDateTime currentDate) {
         return !currentDate.isBefore(startDate.atStartOfDay()) && !currentDate.isAfter(endDate.atStartOfDay());
     }
