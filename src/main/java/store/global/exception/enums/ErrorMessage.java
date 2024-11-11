@@ -18,6 +18,7 @@ public enum ErrorMessage {
     public String getMessage() {
         return ErrorConstants.ERROR_MESSAGE_PREFIX.getValue() + ErrorConstants.SPACE.getValue()
             + message
+            + ErrorConstants.SPACE.getValue()
             + ErrorConstants.INPUT_AGAIN_MESSAGE.getValue();
     }
 }
