@@ -2,21 +2,23 @@ package store.view;
 
 import static store.view.ConsoleMessage.ASK_ADDITIONAL_PURCHASE;
 import static store.view.ConsoleMessage.ASK_MEMBERSHIP_DISCOUNT;
-import static store.view.ConsoleMessage.CURRENT_PRODUCTS;
 import static store.view.ConsoleMessage.ENTER_PRODUCTS_TO_PURCHASE;
 import static store.view.ConsoleMessage.PROMOTION_AVAILABLE;
 import static store.view.ConsoleMessage.PROMOTION_STOCK_INSUFFICIENT;
 import static store.view.ConsoleMessage.WELCOME_MESSAGE;
 
-import java.util.Map;
+import java.util.List;
 import store.domain.product.Product;
+import store.domain.product.ProductRepository;
 
 public class OutputView {
 
-    private StockMessageChecker stockMessageChecker;
+    private final OutputFormatter outputFormatter;
+    private final ProductRepository productRepository;
 
-    public OutputView(StockMessageChecker stockMessageChecker) {
-        this.stockMessageChecker = stockMessageChecker;
+    public OutputView(OutputFormatter outputFormatter, ProductRepository productRepository) {
+        this.outputFormatter = outputFormatter;
+        this.productRepository = productRepository;
     }
 
     public void printMessage(String message) {
@@ -27,14 +29,9 @@ public class OutputView {
         System.out.println(WELCOME_MESSAGE.getMessage());
     }
 
-    public void printProducts(Map<String, Product> products) {
-        StringBuilder productsInformation = new StringBuilder();
-        productsInformation.append(CURRENT_PRODUCTS.getMessage()).append(System.lineSeparator())
-            .append(System.lineSeparator());
-        for (Product product : products.values()) {
-            productsInformation.append(stockMessageChecker.getStockMessage(product))
-                .append(System.lineSeparator());
-        }
+    public void printProducts() {
+        List<Product> allProducts = productRepository.getAllProducts();
+        String productsInformation = outputFormatter.formatProductListMessage(allProducts);
         System.out.println(productsInformation);
     }
 
