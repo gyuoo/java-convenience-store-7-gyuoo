@@ -1,6 +1,7 @@
 package store.global.config;
 
 import store.controller.MainController;
+import store.controller.OrderController;
 import store.domain.product.ProductRepository;
 import store.domain.promotion.PromotionRepository;
 import store.global.util.FileParser;
@@ -27,8 +28,10 @@ public class Config {
     private final OutputView outputView = new OutputView(outputFormatter, productRepository);
     private final InputView inputView = new InputView(outputView, stockInputValidator,
         productInputValidator);
-    private final MainController controller = new MainController(fileService, inputView,
-        outputView);
+    private final OrderController orderController = new OrderController(inputView, outputView,
+        productRepository);
+    private final MainController controller = new MainController(fileService, inputView, outputView,
+        orderController);
 
     public MainController mainController() {
         return controller;
