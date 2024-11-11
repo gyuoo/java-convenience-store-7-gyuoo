@@ -1,5 +1,7 @@
 package store.domain.product;
 
+import static store.exception.enums.ErrorMessage.EXCEED_STOCK_QUANTITY;
+
 public class Product {
 
     private String name;
@@ -22,6 +24,13 @@ public class Product {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public void reduceQuantity(int quantity) {
+        if (quantity > this.quantity) {
+            throw new IllegalArgumentException(EXCEED_STOCK_QUANTITY.getMessage());
+        }
+        this.quantity -= quantity;
     }
 
     public boolean isOutOfStock() {
