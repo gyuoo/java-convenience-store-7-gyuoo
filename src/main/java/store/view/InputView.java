@@ -1,5 +1,10 @@
 package store.view;
 
+import static store.view.ConsoleMessage.ASK_ADDITIONAL_PURCHASE;
+import static store.view.ConsoleMessage.ASK_MEMBERSHIP_DISCOUNT;
+import static store.view.ConsoleMessage.PROMOTION_AVAILABLE;
+import static store.view.ConsoleMessage.PROMOTION_STOCK_INSUFFICIENT;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import store.domain.product.ProductInformation;
@@ -39,7 +44,23 @@ public class InputView {
         }
     }
 
-    public boolean userConfirmed(String message) {
+    public boolean askForMembershipDiscount() {
+        return userConfirmed(ASK_MEMBERSHIP_DISCOUNT.getMessage());
+    }
+
+    public boolean askForPromotionAvailable() {
+        return userConfirmed(PROMOTION_AVAILABLE.getMessage());
+    }
+
+    public boolean askForPurchaseWithoutPromotion() {
+        return userConfirmed(PROMOTION_STOCK_INSUFFICIENT.getMessage());
+    }
+
+    public boolean askForAdditionalPurchase() {
+        return userConfirmed(ASK_ADDITIONAL_PURCHASE.getMessage());
+    }
+
+    private boolean userConfirmed(String message) {
         while (true) {
             System.out.println(message);
             String response = readLine();

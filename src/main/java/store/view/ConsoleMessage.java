@@ -21,6 +21,7 @@ public enum ConsoleMessage {
     RECEIPT_HEADER("==============W 편의점================"),
     RECEIPT_GIFT_HEADER("============증\t정==============="),
     RECEIPT_FOOTER("===================================="),
+    PRODUCT_LIST_HEADER("상품명\t\t수량\t금액"),
     TOTAL_PURCHASE_AMOUNT("총구매액\t\t%d\t%,d"),
     EVENT_DISCOUNT("행사할인\t\t\t-%,d"),
     MEMBERSHIP_DISCOUNT("멤버십할인\t\t\t-%,d"),
