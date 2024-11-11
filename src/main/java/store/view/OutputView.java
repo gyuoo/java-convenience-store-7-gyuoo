@@ -15,21 +15,25 @@ public class OutputView {
 
     private StockMessageChecker stockMessageChecker;
 
+    public OutputView(StockMessageChecker stockMessageChecker) {
+        this.stockMessageChecker = stockMessageChecker;
+    }
+
     public void printMessage(String message) {
         System.out.println(message);
     }
 
     public void printWelcomeMessage() {
-        System.out.println(WELCOME_MESSAGE);
+        System.out.println(WELCOME_MESSAGE.getMessage());
     }
 
     public void printProducts(Map<String, Product> products) {
         StringBuilder productsInformation = new StringBuilder();
-        productsInformation.append(CURRENT_PRODUCTS).append(System.lineSeparator())
-                .append(System.lineSeparator());
+        productsInformation.append(CURRENT_PRODUCTS.getMessage()).append(System.lineSeparator())
+            .append(System.lineSeparator());
         for (Product product : products.values()) {
             productsInformation.append(stockMessageChecker.getStockMessage(product))
-                    .append(System.lineSeparator());
+                .append(System.lineSeparator());
         }
         System.out.println(productsInformation);
     }
@@ -43,7 +47,8 @@ public class OutputView {
     }
 
     public void printPromotionStockInsufficient(String productName, int quantity) {
-        System.out.println(String.format(PROMOTION_STOCK_INSUFFICIENT.getMessage(), productName, quantity));
+        System.out.println(
+            String.format(PROMOTION_STOCK_INSUFFICIENT.getMessage(), productName, quantity));
     }
 
     public void printAskMembershipDiscount() {
