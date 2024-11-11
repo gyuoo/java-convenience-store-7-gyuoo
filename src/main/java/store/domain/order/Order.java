@@ -39,10 +39,9 @@ public class Order {
 
     private void processItem(OrderItem item) {
         int promoStock = productRepository.getPromotionStock(item.getProductName());
-        if (isPartialPromotionAvailable(item, promoStock)) {
-            if (!handlePartialPromotion(item, promoStock)) {
-                return;
-            }
+        if (isPartialPromotionAvailable(item, promoStock) && !handlePartialPromotion(item,
+            promoStock)) {
+            return;
         }
         productRepository.reduceStock(item.getProductName(), item.getQuantity());
     }
