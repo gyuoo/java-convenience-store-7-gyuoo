@@ -1,4 +1,4 @@
-package store.exception.enums;
+package store.global.exception.enums;
 
 public enum ErrorMessage {
     INVALID_FORMAT("올바르지 않은 형식으로 입력했습니다."),
@@ -16,7 +16,8 @@ public enum ErrorMessage {
     }
 
     public String getMessage() {
-        return ErrorConstants.ERROR_MESSAGE_PREFIX.getValue() + ErrorConstants.SPACE.getValue() + message
-                + ErrorConstants.INPUT_AGAIN_MESSAGE.getValue();
+        return ErrorConstants.ERROR_MESSAGE_PREFIX.getValue() + ErrorConstants.SPACE.getValue()
+            + message
+            + ErrorConstants.INPUT_AGAIN_MESSAGE.getValue();
     }
 }

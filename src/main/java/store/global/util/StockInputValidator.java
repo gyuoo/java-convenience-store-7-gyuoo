@@ -1,9 +1,9 @@
-package store.util;
+package store.global.util;
 
 import java.util.List;
 import store.domain.product.ProductInformation;
 import store.domain.product.ProductRepository;
-import store.exception.enums.ErrorMessage;
+import store.global.exception.enums.ErrorMessage;
 
 public class StockInputValidator {
 

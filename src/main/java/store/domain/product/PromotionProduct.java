@@ -1,7 +1,7 @@
 package store.domain.product;
 
 import store.domain.promotion.Promotion;
-import store.util.DateManager;
+import store.global.util.DateManager;
 
 public class PromotionProduct extends Product {
 

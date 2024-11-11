@@ -1,4 +1,4 @@
-package store.exception.enums;
+package store.global.exception.enums;
 
 public enum ErrorConstants {
     ERROR_MESSAGE_PREFIX("[ERROR]"),

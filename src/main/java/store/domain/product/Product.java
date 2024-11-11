@@ -1,6 +1,6 @@
 package store.domain.product;
 
-import static store.exception.enums.ErrorMessage.EXCEED_STOCK_QUANTITY;
+import static store.global.exception.enums.ErrorMessage.EXCEED_STOCK_QUANTITY;
 
 public class Product {
 

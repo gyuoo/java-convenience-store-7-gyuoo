@@ -1,4 +1,4 @@
-package store.util;
+package store.global.util;
 
 import static store.domain.product.ProductFactory.createProduct;
 import static store.domain.promotion.PromotionFactory.createPromotion;
@@ -23,7 +23,8 @@ public class FileParser {
         int quantity = Integer.parseInt(values.get(2));
         String promotion = values.get(3);
 
-        return createProduct(name, price, quantity, promotionRepository.getPromotionByName(promotion));
+        return createProduct(name, price, quantity,
+            promotionRepository.getPromotionByName(promotion));
     }
 
     public Promotion parsePromotion(List<String> values) {

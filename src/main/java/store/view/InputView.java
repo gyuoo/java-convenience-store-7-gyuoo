@@ -3,8 +3,8 @@ package store.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import store.domain.product.ProductInformation;
-import store.util.ProductInputValidator;
-import store.util.StockInputValidator;
+import store.global.util.ProductInputValidator;
+import store.global.util.StockInputValidator;
 
 public class InputView {
 
@@ -13,7 +13,7 @@ public class InputView {
     private final ProductInputValidator productInputValidator;
 
     public InputView(OutputView outputView, StockInputValidator stockInputValidator,
-                     ProductInputValidator productInputValidator) {
+        ProductInputValidator productInputValidator) {
         this.outputView = outputView;
         this.stockInputValidator = stockInputValidator;
         this.productInputValidator = productInputValidator;
@@ -28,7 +28,8 @@ public class InputView {
             outputView.printEnterProductsToPurchase();
             String input = readLine();
             try {
-                List<ProductInformation> products = productInputValidator.validateProductInput(input);
+                List<ProductInformation> products = productInputValidator.validateProductInput(
+                    input);
                 stockInputValidator.validateProductDetails(products);
                 return products;
             } catch (IllegalArgumentException e) {

@@ -6,12 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import store.domain.product.Product;
 import store.domain.product.ProductRepository;
 import store.domain.promotion.Promotion;
 import store.domain.promotion.PromotionRepository;
-import store.util.FileParser;
+import store.global.util.FileParser;
 
 public class FileService {
 
@@ -20,10 +21,14 @@ public class FileService {
     private final PromotionRepository promotionRepository;
 
     public FileService(FileParser fileParser, ProductRepository productRepository,
-                       PromotionRepository promotionRepository) {
+        PromotionRepository promotionRepository) {
         this.fileParser = fileParser;
         this.productRepository = productRepository;
         this.promotionRepository = promotionRepository;
+    }
+
+    public Map<String, Product> getProductsAsMap() {
+        return productRepository.getAllProducts();
     }
 
     public void savePromotions(List<Promotion> promotions) {
@@ -42,7 +47,8 @@ public class FileService {
         return loadEntitiesFromFile(filePath, line -> fileParser.parseProduct(parseLine(line)));
     }
 
-    private <T> List<T> loadEntitiesFromFile(String filePath, Function<String, T> parseFunction) throws IOException {
+    private <T> List<T> loadEntitiesFromFile(String filePath, Function<String, T> parseFunction)
+        throws IOException {
         List<T> entities = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             skipHeader(br);

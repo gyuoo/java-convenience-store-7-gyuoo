@@ -1,7 +1,7 @@
-package store.util;
+package store.global.util;
 
-import static store.exception.enums.ErrorMessage.EMPTY_INPUT;
-import static store.exception.enums.ErrorMessage.INVALID_FORMAT;
+import static store.global.exception.enums.ErrorMessage.EMPTY_INPUT;
+import static store.global.exception.enums.ErrorMessage.INVALID_FORMAT;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,8 +22,8 @@ public class ProductInputValidator {
         }
         List<String> products = Arrays.stream(input.split(PRODUCT_SEPARATOR)).toList();
         return products.stream()
-                .map(this::parseProductInformation)
-                .collect(Collectors.toList());
+            .map(this::parseProductInformation)
+            .collect(Collectors.toList());
     }
 
     private ProductInformation parseProductInformation(String product) {
